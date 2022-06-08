@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Depth</title>
+</head>
+<body>
+<table border="1">
+  <thead>
+    <tr>
+      <th colspan="2">Ask</th>
+      <th rowspan="2">Level</th>
+      <th colspan="2">Bid</th>
+    </tr>
+    <tr>
+      <th>Amt</th>
+      <th>Price</th>
+      <th>Price</th>
+      <th>Amt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:if="${depth == null or depth.isEmpty()}">
+      <td colspan="5">No Data</td>
+    </tr>
+    <tr th:each="item: ${depth}">
+      <td th:text="${item.askamt}">Ask Amt</td>
+      <td th:text="${item.askprice}">Ask Price</td>
+      <td th:text="${item.level}">Level</td>
+      <td th:text="${item.bidprice}">Bid Price</td>
+      <td th:text="${item.bidamt}">Bid Amt</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
