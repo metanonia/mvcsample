@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -41,10 +38,10 @@ public class PublicController {
 
     @ResponseBody
     @PostMapping("/getDepth")
-    public String getDepth(Model model) {
+    public String getDepth(@RequestParam HashMap<String,Object>params, Model model) {
+        log.info(params.toString());
         List<HashMap<String,Object>> list = depthService.findAll();
-        JSONArray jsonArray = new JSONArray();
-        jsonArray.put(list);
+        JSONArray jsonArray = new JSONArray(list);
         log.info(jsonArray.toString());
         return jsonArray.toString();
     }
