@@ -37,7 +37,7 @@ public class PublicController {
     }
 
     @ResponseBody
-    @PostMapping("/getDepth")
+    @RequestMapping("/getDepth")
     public String getDepth(@RequestParam HashMap<String,Object>params, Model model) {
         log.info(params.toString());
         List<HashMap<String,Object>> list = depthService.findAll();
