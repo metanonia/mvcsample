@@ -26,6 +26,7 @@ public class DepthService {
             DepthId bid = new DepthId("BTCUSDT", idx, "bid");
             Optional<Depth> Bid = depthRepository.findById(bid);
             HashMap<String,Object>map = new HashMap<>();
+            map.put("symbol", "BTCUSDT");
             map.put("level", idx);
             if(Ask.isPresent()) {
                 Depth item = Ask.get();
